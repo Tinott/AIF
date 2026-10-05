@@ -1,0 +1,13 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY requirements-gradio.txt .
+RUN pip install --no-cache-dir -r requirements-gradio.txt
+
+COPY . /app
+
+EXPOSE 7860
+ENV PYTHONUNBUFFERED=1
+
+CMD ["python", "mnist_gradio.py"]
